@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎓 FrançaisIA - 150 Questions</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--p:#6366f1;--s:#10b981;--w:#f59e0b;--d:#ef4444}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;padding:15px}
+.container{max-width:1400px;margin:0 auto}
+header{background:#fff;border-radius:20px;padding:25px;margin-bottom:25px;box-shadow:0 10px 40px rgba(0,0,0,.15);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.logo{display:flex;align-items:center;gap:18px}
+.logo-icon{width:65px;height:65px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:18px;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(102,126,234,.4)}
+.logo-icon::before{content:'F';font-size:2.5em;font-weight:900;color:#fff;font-family:Georgia,serif;font-style:italic}
+.logo-text h1{font-size:2em;background:linear-gradient(135deg,#667eea,#764ba2);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800}
+.logo-text p{color:#6b7280;font-size:.95em;margin-top:4px}
+.btn{padding:12px 24px;border-radius:12px;border:none;cursor:pointer;font-weight:600;color:#fff;transition:all .3s}
+.btn-h{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+.btn-e{background:linear-gradient(135deg,#10b981,#059669)}
+.btn-r{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.btn:hover{transform:translateY(-2px)}
+.dash{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-bottom:25px}
+.stat{background:#fff;border-radius:18px;padding:25px;box-shadow:0 4px 15px rgba(0,0,0,.1);display:flex;align-items:center;gap:20px;transition:all .3s}
+.stat:hover{transform:translateY(-5px)}
+.si{width:65px;height:65px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:2.2em}
+.si.p{background:linear-gradient(135deg,#667eea,#764ba2)}
+.si.s{background:linear-gradient(135deg,#10b981,#059669)}
+.si.w{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.si.i{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+.sc h3{font-size:2.2em;color:#1f2937;font-weight:700}
+.sc p{color:#6b7280;font-size:.95em;margin-top:4px}
+.lc{background:#fff;border-radius:18px;padding:30px;margin-bottom:25px;box-shadow:0 4px 15px rgba(0,0,0,.1)}
+.lb{padding:10px 24px;border-radius:12px;font-weight:700;color:#fff}
+.lb.d{background:linear-gradient(135deg,#f59e0b,#d97706)}
+.lb.m{background:linear-gradient(135deg,#3b82f6,#2563eb)}
+.lb.a{background:linear-gradient(135deg,#10b981,#059669)}
+.pb{background:#e5e7eb;border-radius:12px;height:35px;overflow:hidden}
+.pf{height:100%;background:linear-gradient(90deg,#667eea,#764ba2);transition:width 1s;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+.rec{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-radius:18px;padding:30px;margin-bottom:25px}
+.sug{background:rgba(255,255,255,.15);padding:20px;border-radius:14px;margin-top:15px}
+.ls{background:#fff;border-radius:18px;padding:30px;margin-bottom:25px}
+.lg{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px;margin-top:20px}
+.lcard{background:linear-gradient(135deg,#f9fafb,#f3f4f6);border-radius:16px;padding:28px;cursor:pointer;transition:all .3s;border:2px solid #e5e7eb}
+.lcard:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(0,0,0,.15);border-color:var(--p)}
+.li{font-size:3.5em;margin-bottom:18px}
+.lt{font-size:1.5em;color:#1f2937;margin-bottom:12px;font-weight:700}
+.ld{color:#6b7280;font-size:.95em;margin-bottom:18px}
+.lf{display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:2px solid #e5e7eb}
+.ldiff{padding:6px 16px;border-radius:10px;font-size:.85em;font-weight:700}
+.df{background:#d1fae5;color:#065f46}
+.dm{background:#fef3c7;color:#92400e}
+.dd{background:#fee2e2;color:#991b1b}
+.lcon{display:none;background:#fff;border-radius:18px;padding:30px}
+.lcon.active{display:block}
+.bb{background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;padding:14px 32px;border-radius:12px;font-size:1.05em;cursor:pointer;font-weight:700;transition:all .3s}
+.bb:hover{transform:scale(1.05)}
+.qc{background:linear-gradient(135deg,#f9fafb,#f3f4f6);border-radius:16px;padding:35px;margin:25px 0}
+.qh{display:flex;align-items:center;gap:18px;margin-bottom:28px;flex-wrap:wrap}
+.qn{width:55px;height:55px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4em;font-weight:800}
+.qt h3{font-size:1.4em;color:#1f2937;line-height:1.6;font-weight:600}
+.og{display:grid;gap:16px}
+.opt{background:#fff;padding:22px;border-radius:12px;border:2px solid #e5e7eb;cursor:pointer;transition:all .3s;font-size:1.05em}
+.opt:hover{border-color:var(--p);transform:translateX(5px)}
+.opt.cor{background:linear-gradient(135deg,#d1fae5,#a7f3d0);border-color:var(--s)}
+.opt.wr{background:linear-gradient(135deg,#fee2e2,#fecaca);border-color:var(--d)}
+.exp{background:linear-gradient(135deg,#dbeafe,#bfdbfe);border-left:4px solid var(--p);padding:22px;border-radius:12px;margin-top:22px;display:none}
+.exp.show{display:block}
+.exp h4{color:var(--p);margin-bottom:12px;font-size:1.2em}
+.nbtn{padding:16px 38px;border:none;border-radius:12px;font-size:1.1em;font-weight:700;cursor:pointer;color:#fff;background:linear-gradient(135deg,#667eea,#764ba2);margin-top:22px;transition:all .3s}
+.nbtn:hover{transform:scale(1.05)}
+.pr{display:none;text-align:center;padding:35px}
+.pr.show{display:block}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:1000;padding:20px;overflow-y:auto}
+.modal.show{display:flex;align-items:center;justify-content:center}
+.mc{background:#fff;border-radius:20px;padding:35px;max-width:800px;width:100%;max-height:90vh;overflow-y:auto}
+.cm{width:45px;height:45px;border-radius:50%;background:var(--d);border:none;cursor:pointer;font-size:1.6em;color:#fff;float:right}
+@media(max-width:768px){header{flex-direction:column}.lg,.dash{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="logo">
+<div class="logo-icon"></div>
+<div class="logo-text"><h1>FrançaisIA</h1><p>150 Questions de Grammaire</p></div>
+</div>
+<div>
+<button class="btn btn-h" onclick="showHelp()">📖</button>
+<button class="btn btn-e" onclick="exportData()">💾</button>
+<button class="btn btn-r" onclick="resetData()">🔄</button>
+</div>
+</header>
+
+<div class="modal" id="hm">
+<div class="mc">
+<button class="cm" onclick="closeHelp()">×</button>
+<h2 style="color:var(--p);margin-bottom:20px">📖 FrançaisIA</h2>
+<p style="line-height:1.8;color:#6b7280">150 questions sur 10 modules - Master Sciences du Langage</p>
+</div>
+</div>
+
+<div id="md">
+<div class="dash">
+<div class="stat"><div class="si p">📊</div><div class="sc"><h3 id="tq">0</h3><p>Questions</p></div></div>
+<div class="stat"><div class="si s">✅</div><div class="sc"><h3 id="ca">0</h3><p>Correctes</p></div></div>
+<div class="stat"><div class="si w">🎯</div><div class="sc"><h3 id="ar">0%</h3><p>Taux</p></div></div>
+<div class="stat"><div class="si i">⚡</div><div class="sc"><h3 id="st">0</h3><p>Série</p></div></div>
+</div>
+
+<div class="lc">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap">
+<div><h2>Progression</h2></div>
+<div class="lb d" id="lvb">Débutant</div>
+</div>
+<div class="pb"><div class="pf" id="lpf" style="width:0%">0%</div></div>
+</div>
+
+<div class="rec">
+<h2>🎯 Recommandations</h2>
+<div class="sug" id="sg"><strong>Commencez</strong><br>Sélectionnez un module</div>
+</div>
+
+<div class="ls">
+<h2>📚 10 Modules (150 Questions)</h2>
+<div class="lg" id="lgr"></div>
+</div>
+</div>
+
+<div class="lcon" id="lc">
+<button class="bb" onclick="exitLesson()">← Retour</button>
+<h3 id="clt" style="margin:25px 0;font-size:1.8em"></h3>
+<p id="lpt" style="color:#6b7280;margin-bottom:20px"></p>
+<div id="qa"></div>
+<button class="nbtn" id="nb" onclick="nextQ()" style="display:none">Question suivante →</button>
+<div class="pr" id="rp"></div>
+</div>
+</div>
+
+<script>
+const ls=[
+{id:'noms',t:'Les Noms',i:'📦',d:'Identification et classification',di:'facile'},
+{id:'verbes',t:'Les Verbes',i:'🏃',d:'Reconnaissance et utilisation',di:'moyen'},
+{id:'adjectifs',t:'Les Adjectifs',i:'🎨',d:'Accord en genre et nombre',di:'moyen'},
+{id:'determinants',t:'Les Déterminants',i:'🔤',d:'Articles et déterminants',di:'difficile'},
+{id:'prepositions',t:'Les Prépositions',i:'➡️',d:'Lieu et temps',di:'difficile'},
+{id:'pronoms',t:'Les Pronoms',i:'👥',d:'Pronoms personnels',di:'moyen'},
+{id:'conjugaison',t:'La Conjugaison',i:'🔄',d:'Temps principaux',di:'difficile'},
+{id:'phrases',t:'Structure Phrase',i:'✏️',d:'Construction correcte',di:'moyen'},
+{id:'orthographe',t:'Orthographe',i:'📝',d:'Erreurs courantes',di:'difficile'},
+{id:'temps',t:'Les Temps',i:'⏰',d:'Distinction temporelle',di:'facile'}
+];
+
+const qs={noms:[
+{q:"Dans 'Le chat noir dort', quel est le nom?",o:["Le","chat","noir","dort"],c:1,e:"'Chat' est un nom commun désignant un animal."},
+{q:"Quel mot est un nom propre?",o:["ville","Paris","maison","rue"],c:1,e:"'Paris' est un nom propre avec majuscule."},
+{q:"Combien de noms dans 'Marie joue au ballon'?",o:["1","2","3","0"],c:1,e:"Deux noms: 'Marie' et 'ballon'."},
+{q:"Quel nom désigne une idée abstraite?",o:["table","bonheur","chien","Paris"],c:1,e:"'Bonheur' est un nom abstrait."},
+{q:"'Professeur' désigne:",o:["un lieu","une personne","une chose","une action"],c:1,e:"'Professeur' est un nom de personne."},
+{q:"Le nom propre dans 'L'Algérie est belle':",o:["pays","belle","Algérie","est"],c:2,e:"'Algérie' est un nom propre de pays."},
+{q:"Quel nom est féminin?",o:["garçon","fleur","livre","stylo"],c:1,e:"'Fleur' est féminin."},
+{q:"Le pluriel de 'cheval':",o:["chevals","chevaux","chevaus","chevales"],c:1,e:"Pluriel irrégulier: chevaux."},
+{q:"Quel mot n'est PAS un nom?",o:["courage","rapidement","soleil","enfance"],c:1,e:"'Rapidement' est un adverbe."},
+{q:"Dans 'Le livre de Sophie', qui possède?",o:["livre","de","Sophie","Le"],c:2,e:"'Sophie' indique la possession."},
+{q:"Un nom collectif désigne:",o:["une chose","un groupe","une action","une qualité"],c:1,e:"Exemple: foule, équipe."},
+{q:"Féminin de 'directeur':",o:["directeure","directrice","directeuse","directeuresse"],c:1,e:"Le féminin est 'directrice'."},
+{q:"'Soleil' est un nom:",o:["propre","commun","abstrait","collectif"],c:1,e:"'Soleil' est un nom commun."},
+{q:"Dans 'Trois pommes', 'pommes' est:",o:["verbe","nom pluriel","adjectif","singulier"],c:1,e:"'Pommes' est au pluriel."},
+{q:"'Amitié' exprime:",o:["objet","sentiment","lieu","personne"],c:1,e:"Nom abstrait exprimant un sentiment."}
+],verbes:[
+{q:"Dans 'Pierre court vite', le verbe est:",o:["Pierre","court","vite","aucun"],c:1,e:"'Court' est un verbe d'action."},
+{q:"Quel est le verbe d'état?",o:["courir","manger","être","danser"],c:2,e:"'Être' est un verbe d'état."},
+{q:"'Je chante': 'chante' est:",o:["nom","verbe","adjectif","adverbe"],c:1,e:"'Chante' est un verbe conjugué."},
+{q:"L'infinitif de 'fais' est:",o:["faisant","faire","fait","faisais"],c:1,e:"L'infinitif de 'fais' est 'faire'."},
+{q:"Quel verbe exprime une action?",o:["être","sembler","paraître","marcher"],c:3,e:"'Marcher' exprime une action."},
+{q:"Dans 'Il a mangé', l'auxiliaire est:",o:["Il","a","mangé","aucun"],c:1,e:"'A' est l'auxiliaire avoir."},
+{q:"'Ils parlent': nombre de verbes?",o:["0","1","2","3"],c:1,e:"Un seul verbe: 'parlent'."},
+{q:"Le verbe dans 'Je suis content':",o:["Je","suis","content","aucun"],c:1,e:"'Suis' est le verbe être."},
+{q:"Quel verbe n'exprime pas d'action?",o:["courir","devenir","sauter","jouer"],c:1,e:"'Devenir' est un verbe d'état."},
+{q:"'Nous avons chanté': temps utilisé?",o:["présent","futur","passé composé","imparfait"],c:2,e:"Passé composé."},
+{q:"L'infinitif de 'vont' est:",o:["aller","allant","allé","va"],c:0,e:"L'infinitif de 'vont' est 'aller'."},
+{q:"'Elle danse': fonction du verbe?",o:["sujet","action","complément","adjectif"],c:1,e:"Le verbe exprime l'action."},
+{q:"Quel est l'auxiliaire de 'être'?",o:["avoir","être","faire","aller"],c:1,e:"On utilise 'être' comme auxiliaire."},
+{q:"Dans 'Tu finiras demain', le verbe est au:",o:["présent","passé","futur","conditionnel"],c:2,e:"'Finiras' est au futur."},
+{q:"'Ils étaient': temps du verbe?",o:["présent","imparfait","futur","passé composé"],c:1,e:"'Étaient' est à l'imparfait."}
+],adjectifs:[
+{q:"'Un chat noir': l'adjectif est:",o:["Un","chat","noir","aucun"],c:2,e:"'Noir' qualifie le chat."},
+{q:"Féminin de 'grand':",o:["grande","grand","grands","grandes"],c:0,e:"On ajoute 'e': grande."},
+{q:"Pluriel de 'beau':",o:["beaux","beaus","beauxs","beaulx"],c:0,e:"Pluriel irrégulier: beaux."},
+{q:"'Une fleur belle': accord correct?",o:["Oui","Non, 'bel'","Non, 'beau'","Non, 'belles'"],c:0,e:"'Belle' s'accorde avec 'fleur'."},
+{q:"Dans 'Des chiens gentils', l'adjectif:",o:["chiens","Des","gentils","aucun"],c:2,e:"'Gentils' qualifie les chiens."},
+{q:"Féminin de 'heureux':",o:["heureuse","heureusee","heureuses","heureux"],c:0,e:"On transforme -eux en -euse."},
+{q:"'Un livre intéressant': l'adjectif se place:",o:["avant","après","les deux","aucun"],c:1,e:"La plupart se placent après."},
+{q:"Pluriel de 'national':",o:["nationals","nationaux","nationales","national"],c:1,e:"Les adjectifs en -al font -aux."},
+{q:"'Des filles intelligentes': accord correct?",o:["Oui","Non, intelligent","Non, intelligents","Non, intelligente"],c:0,e:"'Intelligentes' s'accorde."},
+{q:"L'adjectif de couleur 'orange':",o:["s'accorde","ne s'accorde pas","parfois","selon contexte"],c:1,e:"Les couleurs issues de noms sont invariables."},
+{q:"Féminin de 'vieux':",o:["vieille","vieuxe","vieuse","vieulle"],c:0,e:"Forme irrégulière: vieille."},
+{q:"'Un bon livre': l'adjectif se place:",o:["après","avant","les deux","nulle part"],c:1,e:"Certains courts se placent avant."},
+{q:"Pluriel de 'bleu':",o:["bleu","bleus","bleues","bleuxs"],c:1,e:"Pluriel régulier: bleus."},
+{q:"'Des robes blanches': genre et nombre?",o:["masculin singulier","féminin singulier","masculin pluriel","féminin pluriel"],c:3,e:"Féminin pluriel."},
+{q:"L'adjectif 'français' au féminin:",o:["française","françaisse","français","francaise"],c:0,e:"On ajoute 'e': française."}
+],determinants:[
+{q:"Dans 'Le chat', 'le' est:",o:["nom","verbe","article défini","adjectif"],c:2,e:"'Le' est un article défini masculin."},
+{q:"Article indéfini féminin:",o:["un","une","le","la"],c:1,e:"'Une' est l'article indéfini féminin."},
+{q:"'Les enfants': type de déterminant?",o:["défini","indéfini","possessif","démonstratif"],c:0,e:"'Les' est un article défini pluriel."},
+{q:"Quel est un déterminant possessif?",o:["le","mon","ce","des"],c:1,e:"'Mon' indique la possession."},
+{q:"'Cette maison': type de déterminant?",o:["défini","indéfini","possessif","démonstratif"],c:3,e:"'Cette' est démonstratif."},
+{q:"Article devant 'arbre':",o:["le","la","l'","les"],c:2,e:"Devant une voyelle: l'arbre."},
+{q:"'Des livres': type d'article?",o:["défini","indéfini","partitif","aucun"],c:1,e:"'Des' est l'article indéfini pluriel."},
+{q:"Déterminant possessif pour 'ta' au pluriel:",o:["ta","tes","ton","tas"],c:1,e:"Pluriel de 'ta': tes."},
+{q:"'Ce garçon' au féminin:",o:["ce fille","cette fille","cet fille","ces fille"],c:1,e:"Féminin de 'ce': cette."},
+{q:"Article contracté de 'à + le':",o:["à le","au","aux","al"],c:1,e:"'À + le' devient 'au'."},
+{q:"'Son livre': genre du possesseur?",o:["masculin","féminin","indéterminé","neutre"],c:2,e:"'Son' ne révèle pas le genre."},
+{q:"Déterminant devant 'école':",o:["le","la","l'","les"],c:2,e:"Devant une voyelle féminine: l'école."},
+{q:"'Mes amis': personne du possesseur?",o:["1ère","2ème","3ème","aucune"],c:0,e:"'Mes' indique la 1ère personne."},
+{q:"Article partitif masculin:",o:["du","de la","des","de l'"],c:0,e:"'Du' est l'article partitif masculin."},
+{q:"'Leurs maisons': nombre de possesseurs?",o:["un","deux ou plus","indéterminé","aucun"],c:1,e:"'Leurs' indique plusieurs possesseurs."}
+],prepositions:[
+{q:"Dans 'Je vais à Paris', la préposition est:",o:["Je","vais","à","Paris"],c:2,e:"'À' est une préposition de direction."},
+{q:"Préposition de lieu:",o:["depuis","pendant","dans","avant"],c:2,e:"'Dans' indique le lieu."},
+{q:"'Le livre de Marie': fonction de 'de'?",o:["temps","lieu","possession","manière"],c:2,e:"'De' indique la possession."},
+{q:"Erreur arabe: 'Je vais ... école'",o:["à l'","dans l'","sur l'","de l'"],c:0,e:"En français: 'à l'école'."},
+{q:"'Sur la table': type de préposition?",o:["temps","lieu","manière","cause"],c:1,e:"'Sur' indique la position."},
+{q:"Préposition de temps:",o:["avec","sans","pendant","pour"],c:2,e:"'Pendant' indique la durée."},
+{q:"'Je viens de Mostaganem': 'de' indique:",o:["temps","origine","manière","but"],c:1,e:"'De' indique la provenance."},
+{q:"Erreur: 'Je suis ... la maison'",o:["à","dans","sur","de"],c:1,e:"Correct: 'dans la maison'."},
+{q:"'Avec mes amis': type de préposition?",o:["temps","lieu","accompagnement","cause"],c:2,e:"'Avec' indique l'accompagnement."},
+{q:"Préposition après 'aller':",o:["dans","à","de","sur"],c:1,e:"On dit 'aller à' un lieu."},
+{q:"'Depuis hier': 'depuis' exprime:",o:["lieu","temps","manière","but"],c:1,e:"'Depuis' indique le point de départ temporel."},
+{q:"'Par la fenêtre': fonction de 'par'?",o:["temps","passage","possession","cause"],c:1,e:"'Par' indique le passage."},
+{q:"Erreur: 'Je parle ... français'",o:["à","en","de","avec"],c:1,e:"Correct: 'en français'."},
+{q:"'Pour toi': fonction de 'pour'?",o:["temps","but","lieu","manière"],c:1,e:"'Pour' indique le destinataire."},
+{q:"'Chez le médecin': 'chez' signifie:",o:["temps","domicile/bureau","manière","cause"],c:1,e:"'Chez' indique le domicile ou bureau."}
+],pronoms:[
+{q:"'Je parle': 'je' est:",o:["nom","verbe","pronom","adjectif"],c:2,e:"'Je' est un pronom personnel sujet."},
+{q:"Pronom complément pour 'à moi':",o:["je","me","moi","mon"],c:1,e:"'Me' est le pronom complément."},
+{q:"'Il la voit': 'la' remplace:",o:["masculin","féminin","pluriel","neutre"],c:1,e:"'La' remplace un féminin singulier."},
+{q:"Pronom possessif de 'mon livre':",o:["le mien","la mienne","les miens","le mienn"],c:0,e:"'Le mien' remplace 'mon livre'."},
+{q:"'Nous leur parlons': 'leur' signifie:",o:["à eux","eux","leurs","pour eux"],c:0,e:"'Leur' = à eux/elles."},
+{q:"Pronom sujet 3ème personne pluriel:",o:["nous","vous","ils","je"],c:2,e:"'Ils/elles' sont 3ème personne pluriel."},
+{q:"'Je le vois': 'le' remplace:",o:["féminin","masculin","pluriel","rien"],c:1,e:"'Le' remplace un masculin singulier."},
+{q:"'C'est à elle': type de pronom pour 'elle'?",o:["sujet","complément direct","tonique","possessif"],c:2,e:"'Elle' après préposition est tonique."},
+{q:"Pronom réfléchi pour 'tu':",o:["te","toi","ton","ta"],c:0,e:"'Te' est le pronom réfléchi de 'tu'."},
+{q:"'Lesquels préfères-tu?': type de pronom?",o:["personnel","possessif","interrogatif","démonstratif"],c:2,e:"'Lesquels' est interrogatif."},
+{q:"'Celui de Marie': type de pronom?",o:["personnel","possessif","démonstratif","réfléchi"],c:2,e:"'Celui' est démonstratif."},
+{q:"'Nous vous voyons': 'vous' est:",o:["sujet","complément direct","tonique","possessif"],c:1,e:"'Vous' est COD."},
+{q:"Pronom pour remplacer 'les livres':",o:["le","la","les","leur"],c:2,e:"'Les' remplace un pluriel."},
+{q:"'Il y va': 'y' remplace:",o:["personne","lieu","chose","temps"],c:1,e:"'Y' remplace un lieu."},
+{q:"'J'en veux': 'en' remplace:",o:["personne","lieu","quantité","temps"],c:2,e:"'En' remplace une quantité."}
+],conjugaison:[
+{q:"'Je chante': temps du verbe?",o:["passé","présent","futur","conditionnel"],c:1,e:"'Chante' est au présent."},
+{q:"Passé composé de 'manger' avec 'je':",o:["je mange","j'ai mangé","je mangeais","je mangerai"],c:1,e:"Auxiliaire avoir + participe passé."},
+{q:"'Nous irons': temps du verbe?",o:["présent","imparfait","futur","conditionnel"],c:2,e:"'Irons' est au futur simple."},
+{q:"Imparfait de 'être' avec 'il':",o:["il est","il était","il sera","il fut"],c:1,e:"'Était' est l'imparfait."},
+{q:"'Tu finiras': groupe du verbe?",o:["1er","2ème","3ème","auxiliaire"],c:1,e:"'Finir' est du 2ème groupe."},
+{q:"Participe passé de 'faire':",o:["faisant","fait","fais","faire"],c:1,e:"Le participe passé de 'faire' est 'fait'."},
+{q:"'Ils ont été': temps utilisé?",o:["présent","imparfait","passé composé","plus-que-parfait"],c:2,e:"Passé composé."},
+{q:"Présent de 'aller' avec 'nous':",o:["nous allez","nous allons","nous irons","nous allions"],c:1,e:"Forme irrégulière: nous allons."},
+{q:"'Elle aurait voulu': temps du verbe?",o:["futur","conditionnel passé","plus-que-parfait","subjonctif"],c:1,e:"Conditionnel passé."},
+{q:"Futur de 'avoir' avec 'tu':",o:["tu as","tu avais","tu auras","tu aurais"],c:2,e:"'Auras' est le futur."},
+{q:"Verbe du 1er groupe:",o:["finir","chanter","voir","faire"],c:1,e:"Les verbes en -er sont du 1er groupe."},
+{q:"'Vous faisiez': temps du verbe?",o:["présent","imparfait","futur","passé simple"],c:1,e:"'Faisiez' est à l'imparfait."},
+{q:"Auxiliaire avec 'venir' au passé composé:",o:["avoir","être","les deux","aucun"],c:1,e:"'Venir' se conjugue avec 'être'."},
+{q:"'Il faut que je parte': mode du verbe?",o:["indicatif","subjonctif","conditionnel","impératif"],c:1,e:"Après 'il faut que': subjonctif."},
+{q:"Impératif de 'être' avec 'tu':",o:["es","sois","soit","être"],c:1,e:"L'impératif de 'être': sois."}
+],phrases:[
+{q:"Ordre correct en français:",o:["Verbe-Sujet-Complément","Sujet-Verbe-Complément","Complément-Verbe-Sujet","Verbe-Complément-Sujet"],c:1,e:"Structure: Sujet + Verbe + Complément."},
+{q:"'Marie mange une pomme': fonction de 'une pomme'?",o:["sujet","verbe","complément d'objet direct","complément circonstanciel"],c:2,e:"'Une pomme' est le COD."},
+{q:"Phrase interrogative correcte:",o:["Tu viens?","Viens tu?","Tu viens-tu?","Viens-tu tu?"],c:0,e:"Interrogation avec intonation."},
+{q:"'Je ne veux pas': place de la négation?",o:["avant","après","autour du verbe","en fin"],c:2,e:"'Ne...pas' encadre le verbe."},
+{q:"Type de phrase: 'Comme c'est beau!'",o:["déclarative","interrogative","exclamative","impérative"],c:2,e:"Point d'exclamation = exclamative."},
+{q:"Phrase impérative correcte:",o:["Tu ranges","Range","Tu range","Ranges"],c:1,e:"À l'impératif: 'Range'."},
+{q:"'Hier, j'ai mangé': fonction de 'hier'?",o:["sujet","COD","complément circonstanciel","attribut"],c:2,e:"'Hier' est complément circonstanciel de temps."},
+{q:"Ponctuation en fin de question:",o:[".",  "!","?",","],c:2,e:"Les questions se terminent par '?'."},
+{q:"'Elle est belle': fonction de 'belle'?",o:["sujet","COD","attribut","complément"],c:2,e:"'Belle' est attribut du sujet."},
+{q:"Interrogation avec inversion correcte:",o:["Viens-tu?","Tu-viens?","Viens tu?","Vien-tu?"],c:0,e:"Inversion: verbe-trait d'union-pronom."},
+{q:"'Ne...jamais' exprime:",o:["affirmation","négation","interrogation","exclamation"],c:1,e:"'Ne...jamais' est une négation."},
+{q:"Phrase déclarative correcte:",o:["Il mange.","Mange-t-il?","Mange!","Qu'il mange!"],c:0,e:"Phrase déclarative avec point."},
+{q:"'Où vas-tu?': type de mot interrogatif?",o:["pronom","adverbe","adjectif","nom"],c:1,e:"'Où' est un adverbe interrogatif."},
+{q:"Place de l'adverbe 'souvent':",o:["début","après le verbe","avant le sujet","fin"],c:1,e:"Les adverbes après le verbe."},
+{q:"'Est-ce que tu viens?': type d'interrogation?",o:["totale","partielle","indirecte","oratoire"],c:0,e:"Interrogation totale (oui/non)."}
+],orthographe:[
+{q:"Orthographe correcte:",o:["à","a","as","ah"],c:0,e:"Préposition: 'à' avec accent."},
+{q:"'Et' ou 'est'? : 'Il ... grand'",o:["et","est","es","ait"],c:1,e:"Verbe être: 'est'."},
+{q:"Pluriel de 'cheval':",o:["chevals","chevaux","chevaus","chevales"],c:1,e:"Pluriel irrégulier: 'chevaux'."},
+{q:"Accent correct: 'él...ve'",o:["é","è","ê","e"],c:1,e:"'Élève' prend un accent grave."},
+{q:"'Son' ou 'sont'? : 'Ils ... partis'",o:["son","sont","sons","sond"],c:1,e:"Verbe être au pluriel: 'sont'."},
+{q:"Orthographe: 'appeller' ou 'appeler'?",o:["appeller","appeler","apeller","apelller"],c:1,e:"Correct: 'appeler' (un seul 'l')."},
+{q:"'Ça' ou 'sa'? : '... maison'",o:["ça","sa","çà","sà"],c:1,e:"Possessif: 'sa'."},
+{q:"Lettre muette dans 'temps':",o:["t","e","m","s"],c:3,e:"Le 's' final est muet."},
+{q:"'Eau', 'au' ou 'o'? : 'B...coup'",o:["eau","au","o","ô"],c:1,e:"'Beaucoup' s'écrit avec 'au'."},
+{q:"Accent sur 'ou'? : 'où es-tu?'",o:["oui","non","parfois","selon"],c:0,e:"'Où' (lieu) prend un accent grave."},
+{q:"'Ces' ou 'ses'? : '... enfants (à lui)'",o:["ces","ses","c'est","sais"],c:1,e:"Possessif: 'ses' enfants."},
+{q:"Orthographe correcte:",o:["déveloper","développer","developer","develloper"],c:1,e:"Correct: 'développer' (pp)."},
+{q:"'C'est' ou 'ses'? : '... mon ami'",o:["c'est","ses","ces","sais"],c:0,e:"Démonstratif + être: 'c'est'."},
+{q:"Féminin de 'blanc':",o:["blance","blanque","blanche","blanc"],c:2,e:"Féminin: 'blanche'."},
+{q:"'Leur' ou 'leurs'? : '... maison' (une seule)",o:["leur","leurs","l'heure","l'eur"],c:0,e:"'Leur' (singulier) maison."}
+],temps:[
+{q:"'Je mange': temps du verbe?",o:["passé","présent","futur","conditionnel"],c:1,e:"'Mange' indique le présent."},
+{q:"Indicateur de futur:",o:["hier","demain","aujourd'hui","avant"],c:1,e:"'Demain' indique le futur."},
+{q:"'J'ai mangé': temps?",o:["présent","passé","futur","conditionnel"],c:1,e:"Passé composé = action passée."},
+{q:"Indicateur de passé:",o:["bientôt","hier","demain","maintenant"],c:1,e:"'Hier' indique le passé."},
+{q:"'Je mangerai': temps?",o:["présent","passé","futur","imparfait"],c:2,e:"'Mangerai' est au futur."},
+{q:"'Maintenant' indique quel temps?",o:["passé","présent","futur","conditionnel"],c:1,e:"'Maintenant' = moment présent."},
+{q:"'Je mangeais': temps?",o:["présent","imparfait","futur","passé simple"],c:1,e:"'Mangeais' est à l'imparfait."},
+{q:"Action terminée dans le passé:",o:["présent","imparfait","passé composé","futur"],c:2,e:"Le passé composé = action terminée."},
+{q:"'Autrefois' indique:",o:["présent","passé","futur","conditionnel"],c:1,e:"'Autrefois' = passé."},
+{q:"Temps pour une habitude passée:",o:["présent","imparfait","passé composé","futur"],c:1,e:"L'imparfait = habitude passée."},
+{q:"'Bientôt' indique:",o:["passé","présent","futur proche","conditionnel"],c:2,e:"'Bientôt' = futur proche."},
+{q:"'Pendant que' + quel temps?",o:["présent","imparfait","futur","conditionnel"],c:1,e:"Action en cours: imparfait."},
+{q:"Temps pour une action future certaine:",o:["présent","futur proche","futur simple","conditionnel"],c:2,e:"Le futur simple = certitude."},
+{q:"'Quand j'étais petit': temps du verbe?",o:["présent","imparfait","passé composé","plus-que-parfait"],c:1,e:"'Étais' est à l'imparfait."},
+{q:"Différence passé composé/imparfait:",o:["aucune","action ponctuelle/habitude","formel/informel","écrit/oral"],c:1,e:"PC = ponctuel ; Imparfait = habitude."}
+]};
+let st={t:0,c:0,s:0,w:{},co:{}};
+let cL=null,cQ=0,sQ=[],sS={};
+
+function init(){
+const sv=localStorage.getItem('francaisIA');
+if(sv)st=JSON.parse(sv);
+upDash();
+renLes();
+}
+
+function upDash(){
+document.getElementById('tq').textContent=st.t;
+document.getElementById('ca').textContent=st.c;
+document.getElementById('ar').textContent=st.t>0?Math.round(st.c/st.t*100)+'%':'0%';
+document.getElementById('st').textContent=st.s;
+const lv=Math.floor(st.t/50);
+const pr=(st.t%50)*2;
+document.getElementById('lpf').style.width=pr+'%';
+document.getElementById('lpf').textContent=pr+'%';
+const bd=document.getElementById('lvb');
+if(lv>=5){bd.textContent='Avancé';bd.className='lb a';}
+else if(lv>=2){bd.textContent='Intermédiaire';bd.className='lb m';}
+else{bd.textContent='Débutant';bd.className='lb d';}
+upRec();
+}
+
+function upRec(){
+const ct=document.getElementById('sg');
+const wk=Object.entries(st.w).sort((a,b)=>b[1]-a[1]).slice(0,1);
+if(wk.length>0){
+const tp=ls.find(l=>l.id===wk[0][0]);
+if(tp){ct.innerHTML='<strong>Amélioration</strong><br>Pratiquez <strong>'+tp.t+'</strong>';return;}
+}
+if(st.s>=5){ct.innerHTML='<strong>Excellente série!</strong><br>'+st.s+' bonnes réponses!';}
+else if(st.t===0){ct.innerHTML='<strong>Commencez</strong><br>Sélectionnez un module';}
+else{ct.innerHTML='<strong>Continuez</strong><br>Vous avez '+st.t+' questions!';}
+}
+
+function renLes(){
+const gr=document.getElementById('lgr');
+gr.innerHTML=ls.map(l=>{
+const co=st.co[l.id]||0;
+const pr=Math.min(Math.round((co/15)*100),100);
+return'<div class="lcard" onclick="stLes(\''+l.id+'\')"><div class="li">'+l.i+'</div><div class="lt">'+l.t+'</div><div class="ld">'+l.d+'</div><div class="lf"><span class="ldiff d'+l.di.charAt(0)+'">'+l.di.charAt(0).toUpperCase()+l.di.slice(1)+'</span><span style="color:#6b7280;font-weight:600;font-size:.9em">'+pr+'%</span></div></div>';
+}).join('');
+}
+
+function stLes(id){
+cL=id;
+cQ=0;
+sQ=[...qs[id]].sort(()=>Math.random()-.5);
+sS={c:0,w:0,e:[]};
+document.getElementById('md').style.display='none';
+document.getElementById('lc').classList.add('active');
+document.getElementById('clt').textContent=ls.find(l=>l.id===id).t;
+ldQ();
+}
+
+function ldQ(){
+if(cQ>=sQ.length){shRep();return;}
+const q=sQ[cQ];
+document.getElementById('lpt').textContent='Question '+(cQ+1)+'/15';
+document.getElementById('qa').innerHTML='<div class="qc"><div class="qh"><div class="qn">'+(cQ+1)+'</div><div class="qt"><h3>'+q.q+'</h3></div></div><div class="og">'+q.o.map((o,i)=>'<div class="opt" onclick="chAns('+i+','+q.c+')">'+(String.fromCharCode(65+i))+'. '+o+'</div>').join('')+'</div><div class="exp" id="exp"><h4>💡 Explication</h4><p>'+q.e+'</p></div></div>';
+document.getElementById('nb').style.display='none';
+}
+
+function chAns(sl,cr){
+const op=document.querySelectorAll('.opt');
+op.forEach(o=>o.style.pointerEvents='none');
+st.t++;
+if(sl===cr){
+op[sl].classList.add('cor');
+st.c++;
+st.s++;
+sS.c++;
+}else{
+op[sl].classList.add('wr');
+op[cr].classList.add('cor');
+st.s=0;
+sS.w++;
+st.w[cL]=(st.w[cL]||0)+1;
+}
+document.getElementById('exp').classList.add('show');
+document.getElementById('nb').style.display='block';
+upDash();
+localStorage.setItem('francaisIA',JSON.stringify(st));
+}
+
+function nextQ(){
+cQ++;
+ldQ();
+}
+
+function shRep(){
+const tt=sS.c+sS.w;
+const pc=Math.round(sS.c/tt*100);
+let ms=pc>=90?'🏆 Excellent!':pc>=70?'⭐ Très bien!':pc>=50?'👍 Bien!':'📚 À revoir';
+st.co[cL]=(st.co[cL]||0)+sS.c;
+localStorage.setItem('francaisIA',JSON.stringify(st));
+document.getElementById('qa').style.display='none';
+document.getElementById('nb').style.display='none';
+document.getElementById('rp').innerHTML='<div style="font-size:4.5em;margin-bottom:15px">'+ms+'</div><div style="font-size:1.8em;color:#1f2937;font-weight:700;margin-bottom:25px">Score: '+sS.c+'/'+tt+' ('+pc+'%)</div><button class="nbtn" onclick="stLes(\''+cL+'\')">🔄 Recommencer</button><button class="nbtn" onclick="exLes()" style="background:linear-gradient(135deg,#10b981,#059669);margin-left:15px">🏠 Dashboard</button>';
+document.getElementById('rp').classList.add('show');
+}
+
+function exLes(){
+document.getElementById('lc').classList.remove('active');
+document.getElementById('md').style.display='block';
+document.getElementById('qa').style.display='block';
+document.getElementById('rp').classList.remove('show');
+upDash();
+renLes();
+}
+
+function showHelp(){document.getElementById('hm').classList.add('show');}
+function closeHelp(){document.getElementById('hm').classList.remove('show');}
+
+function exportData(){
+const d={projet:'FrançaisIA',institution:'Université de Mostaganem',date:new Date().toISOString(),stats:st,modules:10,questions:150};
+const b=new Blob([JSON.stringify(d,null,2)],{type:'application/json'});
+const u=URL.createObjectURL(b);
+const a=document.createElement('a');
+a.href=u;
+a.download='francaisia_'+new Date().toISOString().split('T')[0]+'.json';
+a.click();
+URL.revokeObjectURL(u);
+}
+
+function resetData(){
+if(confirm('Réinitialiser toutes les données?')){
+localStorage.removeItem('francaisIA');
+st={t:0,c:0,s:0,w:{},co:{}};
+upDash();
+renLes();
+}
+}
+
+window.onload=init;
+</script>
+</body>
+</html>
