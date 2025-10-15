@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FrançaisIA - Plateforme d'apprentissage de la grammaire française">
+    <meta name="author" content="Université de Mostaganem - Master Sciences du Langage">
+    <title>FrançaisIA - Apprentissage de la Grammaire Française</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <div class="logo-icon">F</div>
+                <div class="logo-text">
+                    <h1>FrançaisIA</h1>
+                    <p>Plateforme d'Apprentissage de la Grammaire Française</p>
+                    <p class="university">Projet Master - Sciences du Langage - Université de Mostaganem</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="btn btn-primary" onclick="showAbout()">📖 À propos</button>
+                <button class="btn btn-success" onclick="exportData()">💾 Exporter données</button>
+                <button class="btn btn-warning" onclick="resetData()">🔄 Réinitialiser</button>
+            </div>
+        </header>
+
+        <!-- Modal À propos -->
+        <div class="modal" id="aboutModal">
+            <div class="modal-content">
+                <button class="close-modal" onclick="closeAbout()">×</button>
+                <h2>📖 À propos du projet</h2>
+                <div class="about-section">
+                    <h3>🎓 Contexte académique</h3>
+                    <p><strong>Titre:</strong> Développement d'une plateforme d'apprentissage adaptatif de la grammaire française</p>
+                    <p><strong>Programme:</strong> Master Sciences du Langage</p>
+                    <p><strong>Institution:</strong> Université de Mostaganem - Département des Langues Étrangères</p>
+                    <p><strong>Année:</strong> 2024-2025</p>
+                </div>
+
+                <div class="about-section">
+                    <h3>🎯 Objectifs du projet</h3>
+                    <ul>
+                        <li>Développer un outil d'apprentissage de la grammaire française</li>
+                        <li>Analyser les interférences linguistiques arabe-français</li>
+                        <li>Proposer des recommandations personnalisées basées sur les erreurs</li>
+                        <li>Collecter des données pour la recherche en didactique du FLE</li>
+                    </ul>
+                </div>
+
+                <div class="about-section">
+                    <h3>📚 Contenu pédagogique</h3>
+                    <p><strong>150 questions</strong> réparties sur <strong>10 modules</strong> grammaticaux:</p>
+                    <ul>
+                        <li>Les Noms, Les Verbes, Les Adjectifs</li>
+                        <li>Les Déterminants, Les Prépositions, Les Pronoms</li>
+                        <li>La Conjugaison, Structure de Phrase</li>
+                        <li>L'Orthographe, Les Temps Verbaux</li>
+                    </ul>
+                </div>
+
+                <div class="about-section">
+                    <h3>🔬 Cadre théorique</h3>
+                    <ul>
+                        <li>Linguistique appliquée au FLE</li>
+                        <li>Analyse des erreurs (Error Analysis)</li>
+                        <li>Analyse contrastive arabe-français</li>
+                        <li>Didactique des langues étrangères</li>
+                        <li>Technologies éducatives (TICE)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard principal -->
+        <div id="mainDashboard">
+            <!-- Statistiques -->
+            <div class="dashboard">
+                <div class="stat-card">
+                    <div class="stat-icon primary">📊</div>
+                    <div class="stat-content">
+                        <h3 id="totalQuestions">0</h3>
+                        <p>Questions traitées</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon success">✅</div>
+                    <div class="stat-content">
+                        <h3 id="correctAnswers">0</h3>
+                        <p>Réponses correctes</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon warning">🎯</div>
+                    <div class="stat-content">
+                        <h3 id="accuracyRate">0%</h3>
+                        <p>Taux de réussite</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon info">⚡</div>
+                    <div class="stat-content">
+                        <h3 id="streak">0</h3>
+                        <p>Série actuelle</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progression -->
+            <div class="level-card">
+                <div class="level-header">
+                    <div>
+                        <h2>Votre Progression</h2>
+                        <p style="color: #6b7280;">Continuez à pratiquer pour progresser</p>
+                    </div>
+                    <div class="level-badge debutant" id="levelBadge">Débutant</div>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="levelProgress" style="width: 0%">0%</div>
+                </div>
+            </div>
+
+            <!-- Recommandations -->
+            <div class="recommendations">
+                <h2>🎯 Recommandations Personnalisées</h2>
+                <p>Suggestions adaptées à vos besoins d'apprentissage</p>
+                <div class="suggestion" id="suggestions">
+                    <strong>Commencez votre apprentissage</strong><br>
+                    Sélectionnez un module ci-dessous pour débuter.
+                </div>
+            </div>
+
+            <!-- Modules -->
+            <div class="lessons-section">
+                <h2>📚 Modules d'Apprentissage</h2>
+                <p style="color: #6b7280; margin-bottom: 20px;">150 questions réparties sur 10 modules grammaticaux</p>
+                <div class="lessons-grid" id="lessonsGrid"></div>
+            </div>
+        </div>
+
+        <!-- Container de leçon -->
+        <div class="lesson-container" id="lessonContainer">
+            <button class="back-btn" onclick="exitLesson()">← Retour au tableau de bord</button>
+            <h3 id="currentLessonTitle" style="margin: 25px 0; font-size: 1.8em;"></h3>
+            <p id="lessonProgressText" style="color: #6b7280; margin-bottom: 20px;"></p>
+            <div id="questionArea"></div>
+            <button class="btn btn-primary" id="nextBtn" onclick="nextQuestion()" style="display: none; margin-top: 20px;">
+                Question suivante →
+            </button>
+            <div class="performance-report" id="performanceReport"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
